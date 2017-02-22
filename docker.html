@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Containerize This: Intro to Docker</title>
+
+    <meta name="description" content="Docker is a containerization technology that allows processes to be run in isolated execution environments with a shared kernel" />
+    <meta name="author" content="Glenn Goodrich" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <!--
+
+        Impress.js doesn't depend on any external stylesheets. It adds all of the styles it needs for the
+        presentation to work.
+
+        This style below contains styles only for demo presentation. Browse it to see how impress.js
+        classes are used to style presentation steps, or how to apply fallback styles, but I don't want
+        you to use them directly in your presentation.
+
+        Be creative, build your own. We don't really want all impress.js presentations to look the same,
+        do we?
+
+        When creating your own presentation get rid of this file. Start from scratch, it's fun!
+
+    -->
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    <link href="css/docker.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="bored" class="step slide container" data-x="0" data-y="-2500" style="">
+      <p>Containerize This</p>
+      <p>Intro to Docker</p>
+    </div>
+
+    <!--
+
+        The `id` attribute of the step element is used to identify it in the URL, but it's optional.
+        If it is not defined, it will get a default value of `step-N` where N is a number of slide.
+
+        So in the example below it'll be `step-2`.
+
+        The hash part of the url when this step is active will be `#/step-2`.
+
+        You can also use `#step-2` in a link, to point directly to this particular step.
+
+        Please note, that while `#/step-2` (with slash) would also work in a link it's not recommended.
+        Using classic `id`-based links like `#step-2` makes these links usable also in fallback mode.
+
+    -->
+
+    <!--
+
+        This is an example of step element being scaled.
+
+        Again, we use a `data-` attribute, this time it's `data-scale="4"`, so it means that this
+        element will be 4 times larger than the others.
+        From presentation and transitions point of view it means, that it will have to be scaled
+        down (4 times) to make it back to its correct size.
+
+    -->
+    <div id="containers" class="step slide container emphasis" data-x="-2000" data-y="-1500">
+        <p>Docker is a <strong style="font-size: 1.5em;">containerization</strong> technology</p>
+    </div>
+    <div id="containers1" class="step detail" data-x="-2000" data-y="-1700" data-z="-3000">
+        <p>A container is an execution environment</p>
+    </div>
+    <div id="containers2" class="step" data-x="-2000" data-y="-1000" data-z="-4000">
+      <p>Containers have an isolated <strong>CPU</strong>, <strong>Memory</strong>, <strong>I/O</strong>, and <strong>Memory</strong></p>
+    </div>
+    <div id="kernel" class="step" data-x="-2000" data-y="-1500" data-z="-5000" style="text-align:center;">
+      <p style="text-align: left">But they share</p>
+      <img style="width: 50%;" src="./images/docker/Kernel_Layout.png"/>
+      <p style="text-align:right">the kernel</p>
+      <p class="footnote">Image via Wikipedia <a href="https://en.wikipedia.org/wiki/Kernel_(operating_system)#/media/File:Kernel_Layout.svg">here</a></p>
+    </div>
+
+    <div id="images" class="step slide container emphasis" data-x="-1000" data-y="-1500">
+      <p>Containers are based on <b>images</b> </p>
+    </div>
+    <div class="step detail" data-x="-1000" data-y="-1200" data-z="-1000">
+      <p>Images are a collection of read-only layers</p>
+      <p style="font-size: small">This is the Union File System (UFS)</p>
+    </div>
+    <div class="step detail" data-x="-1000" data-y="-1600" data-z="-2000">
+      <p>Each layer holds a file system difference</p>
+      <img src="images/docker/image-layers.jpg"/>
+    </div>
+
+    <div class="step detail" data-x="-1000" data-y="-2000" data-z="-2500">
+      <p>So, think of an image as </p>
+    </div>
+    <div class="step detail" data-x="-400" data-y="-1600" data-z="-2000" data-rotate="90">
+      <p>Filesystem</p>
+    </div>
+    <div class="step detail" data-x="-500" data-y="-1600" data-z="-2000" data-rotate="180">
+      <p>and</p>
+    </div>
+    <div class="step detail" data-x="-1600" data-y="-1600" data-z="-2000" data-rotate="270">
+      <p>Parameters</p>
+    </div>
+
+
+    <div id="container_is_an_image" class="step slide container emphasis" data-x="0" data-y="-1500">
+      <p>Soooo..a container is an <b>image</p></p>
+      <p>With a thin read/write layer on top.</p>
+    </div>
+    <div class="step backslide" data-x="0" data-y="-1500" data-z="-5000" >
+      <img src="images/docker/container-layers.jpg"/>
+    </div>
+    <div class="step" data-x="1500" data-y="-1500" data-z="-6000">
+        <p>This means...</p>
+    </div>
+    <div class="step backslide" data-x="1500" data-y="-800" data-z="-7000">
+      <p>Containers can share an image</p>
+      <img src="images/docker/sharing-layers.jpg"/>
+      <p style="font-size:xx-small">Let's talk about components...</p>
+    </div>
+
+    <div id="components" class="step slide container" data-x="-3000" data-y="-500">
+      <h2>Components of Docker</h2>
+      <p class="component">Docker Engine</p>
+      <p class="compdef">A lightweight runtime that runs containers</p>
+    </div>
+    <div class="step" data-x="-3000" data-y="-500" data-z="-1000">
+      <img src="images/docker/dockerm.png"/>
+    </div>
+
+    <div class="step slide container" data-x="-2000" data-y="-500">
+      <h2>Components of Docker</h2>
+      <p class="component">Docker CLI</p>
+      <p class="compdef">The command line for Docker</p>
+    </div>
+    <div class="step slide" data-x="-2000" data-y="-500" data-z="-1000">
+      <pre style="padding: 0.5em;color: #FFF; background: #000; font-size:0.5em;font-family: Courier;"><code>Usage:  docker COMMAND
+A self-sufficient runtime for containers
+Options:
+      --config string      Location of client config files (default "/Users/ggoodrich/.docker")
+  -D, --debug              Enable debug mode
+      --help               Print usage
+  -H, --host list          Daemon socket(s) to connect to (default [])
+  -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/Users/ggoodrich/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/Users/ggoodrich/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/Users/ggoodrich/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  checkpoint  Manage checkpoints
+  container   Manage containers
+  image       Manage images
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  ...</code></pre>
+    </div>
+
+
+    <div id="registry" class="step slide container" data-x="-1000" data-y="-500">
+      <h2>Components of Docker</h2>
+      <p class="component">Registry</p>
+      <p class="compdef">Store and distribute images</p>
+    </div>
+    <div class="step backslide" data-x="-1000" data-y="-500" data-z="-1000">
+      <img src="images/docker/hub.png"/>
+    </div>
+    <div class="step backslide" data-x="-1000" data-y="-500" data-z="-2000">
+      <a target="_blank" href="https://store.docker.com"><img src="images/docker/store.png"/></a>
+    </div>
+    <div id="volume" class="step slide container" data-x="0" data-y="-500">
+      <h2>Components of Docker</h2>
+      <p class="component">Docker Volume</p>
+      <p class="compdef">Data that lives OUTSIDE the UFS on the HOST</p>
+    </div>
+    <div class="step backslide" data-x="0" data-y="-500" data-z="-1000" >
+      <img src="images/docker/ufs.png" />
+      <p style="font-size: x-small">Image credit <a href="https://www.gitbook.com/book/washraf/the-docker-ecosystem/details">The Docker Ecosystem</a></p>
+    </div>
+    <div class="step backslide" data-x="0" data-y="-500" data-z="-2000" >
+      <img src="images/docker/ufs_vol.png" />
+      <p style="font-size: x-small">Image credit <a href="https://www.gitbook.com/book/washraf/the-docker-ecosystem/details">The Docker Ecosystem</a></p>
+    </div>
+
+    <div id="swarm" class="step slide container" data-x="1000" data-y="-500">
+      <h2>Components of Docker</h2>
+      <p class="component">Docker Swarm</p>
+      <p class="compdef">Cluster Docker Engines</p>
+    </div>
+
+    <div id="installation" class="step install" data-x="-4000" data-y="250">
+      <p>Installation is simple</p>
+    </div>
+    <div class="step install" data-x="-2500" data-y="250">
+      <p>Docker for Mac is a .dmg</p>
+      <ul>
+          <li>No Virtual Box/VM software</li>
+          <li>Uses the xhyve Hypervisor</li>
+      </ul>
+    </div>
+    <div class="step install" data-x="-1000" data-y="250">
+      <img src="images/docker/dockermac.png"/>
+    </div>
+    <div class="step install" data-x="500" data-y="250">
+      <p>Docker for Windows is a .exe</p>
+      <ul>
+          <li>No Virtual Box/VM software</li>
+          <li>Uses Windows Hyper-V package</li>
+      </ul>
+    </div>
+    <div class="step install" data-x="2000" data-y="250">
+      <img src="images/docker/dockerwin.png"/>
+    </div>
+    <div class="step install" data-x="3400" data-y="-350" data-rotate="250">
+      <p>Docker for *nix Distros</p>
+      <ul>
+          <li>Uses a package manager</li>
+          <li>chgroup and namespaces</li>
+      </ul>
+    </div>
+
+
+    <!-- Roots -->
+    <div class="step install" data-x="4150" data-y="10" data-rotate="-20">
+      <p>Docker's roots are old.</p>
+    </div>
+    <div class="step" data-x="4150" data-y="10" data-rotate="-20" data-z="-1000">
+      <a href="https://dzone.com/articles/evolution-of-linux-containers-future">
+        <img src="images/docker/infoq.png" />
+      </a>
+    </div>
+    <div class="step" data-x="4150" data-y="10" data-rotate="-20" data-z="-2000">
+      <p>1979: In the beginning, there was chroot</a>
+      <img src="images/docker/chroot.png"/>
+    </div>
+    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-3000">
+      <p>2007:<br/> Control Groups (thx Google)</a>
+      <p>2008:<br/> LXC - cgroups and namespaces</a>
+    </div>
+    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-4000">
+      <p>2013: DOCKER</a>
+      <p style="font-size: x-small;">2014: Rocket</a>
+      <p style="font-size: x-small;">2016: Windows containers</a>
+    </div>
+
+
+    <!-- Structure -->
+    <div id="great" class="step" data-x="-3500" data-y="2550" data-rotate="-25"> 
+      <p>That's Great.</p>
+    </div>
+    <div class="step" data-x="-3250" data-y="2300" data-rotate="-45"> 
+      <p> But HOW DO I USE IT?</p>
+    </div>
+
+    <div class="step" data-x="-2500" data-y="2000" data-rotate="-0">
+      <p>Thanks!</p>
+      <img src="images/docker/cloud.png"/>
+    </div>
+    <!-- Examples -->
+    <div id="examples" class="step install" data-x="-4500" data-y="1000" data-rotate="90">
+      <p>The Command Line</p>
+    </div>
+    <div class="step install" data-x="-4500" data-y="2000" data-rotate="90">
+      <p>Dockerfile</p>
+    </div>
+
+    <div class="step install" data-x="-4000" data-y="2900" data-rotate="40">
+      <p>Docker Compose</p>
+    </div>
+
+    <div class="step install" data-x="-3000" data-y="3500" data-rotate="30">
+      <p>Docker Swarm</p>
+    </div>
+
+    <div class="step install" data-x="-2000" data-y="3800" data-rotate="5">
+      <p>Development</p>
+      <p>Never install anything locally</p>
+      <p>Ever again</p>
+    </div>
+
+    <div class="step install" data-x="-200" data-y="3800" data-rotate="-5">
+      <p>Production</p>
+      <p>Baked in scalability</p>
+      <p>No more "It works on my box"</p>
+    </div>
+
+    <div class="step install" data-x="1800" data-y="3400" data-rotate="-25">
+      <p>It's not all whales and rainbows</p>
+    </div>
+    <div class="step install" data-x="3000" data-y="2400" data-rotate="-55">
+      <p>Logging/Monitoring</p>
+      <p>Disk space</p>
+    </div>
+
+
+    <div id="questions" class="step" data-x="3500" data-y="1200" data-rotate="-85">
+      <p>Questions?</p>
+    </div>
+
+    <!--
+
+        So to summarize of all the possible attributes used to position presentation steps, we have:
+
+        * `data-x`, `data-y`, `data-z` - they define the position of **the center** of step element on
+            the canvas in pixels; their default value is 0;
+        * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` - they define the rotation of
+            the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
+            are exactly the same;
+        * `data-scale` - defines the scale of step element; default value is 1
+
+        These values are used by impress.js in CSS transformation functions, so for more information consult
+        CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
+
+    -->
+    <div id="overview" class="step" data-x="0" data-y="0" data-scale="10">
+    </div>
+
+</div>
+
+<!--
+
+    Last, but not least.
+
+    To make all described above really work, you need to include impress.js in the page.
+    I strongly encourage to minify it first.
+
+    In here I just include full source of the script to make it more readable.
+
+    You also need to call a `impress().init()` function to initialize impress.js presentation.
+    And you should do it in the end of your document. Not only because it's a good practice, but also
+    because it should be done when the whole document is ready.
+    Of course you can wrap it in any kind of "DOM ready" event, but I was too lazy to do so ;)
+
+-->
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+<!--
+
+    The `impress()` function also gives you access to the API that controls the presentation.
+
+    Just store the result of the call:
+
+        var api = impress();
+
+    and you will get three functions you can call:
+
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( stepIndex | stepElementId | stepElement, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+
+-->
+
+</body>
+</html>
+
+
+<!--
+
+    Are you still reading this?
+
+    For real?
+
+    I'm impressed! Feel free to let me know that you got that far (I'm @bartaz on Twitter), 'cause I'd like
+    to congratulate you personally :)
+
+    But you don't have to do it now. Take my advice and take some time off. Make yourself a cup of coffee, tea,
+    or anything you like to drink. And raise a glass for me ;)
+
+    Cheers!
+
+-->
+

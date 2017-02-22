@@ -85,7 +85,8 @@ body {
     font-family: 'PT Sans', sans-serif;
     min-height: 740px;
 
-    background: rgb(215, 215, 215);
+    /* background: rgb(215, 215, 215);*/
+    background: #79c9df;
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
     background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
@@ -180,6 +181,10 @@ a:focus {
     line-height: 1.5;
 }
 
+.detail {
+  background-color: #79c9df;
+}
+
 /*
     ... and we enhance the styles for impress.js.
 
@@ -209,15 +214,14 @@ a:focus {
 .slide {
     display: block;
 
-    width: 900px;
-    height: 700px;
+    width: 1000px;
+    height: 1000px;
     padding: 40px 60px;
 
-    background-color: white;
-    border-radius: 10px;
+    background-color:#3b4d54 ;
     box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
 
-    color: rgb(102, 102, 102);
+    color: #FFF;
     text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
 
     font-family: 'Open Sans', Arial, sans-serif;
@@ -275,6 +279,28 @@ a:focus {
     -o-transform:      translateZ(50px);
     transform:         translateZ(50px);
 }
+
+.emphasis {
+    text-align: center;
+}
+
+.emphasis p {
+  padding-top: 2em;
+    font-size: 60px;
+    line-height: 1;
+}
+
+.emphasis b {
+    display: block;
+    font-size: 150px;
+    line-height: 250px;
+}
+
+.emphasis .thoughts {
+    font-size: 90px;
+    line-height: 150px;
+}
+
 
 #title .footnote {
     font-size: 32px;
@@ -700,3 +726,48 @@ a:focus {
     Thanks for reading. I hope you enjoyed it at least as much as I enjoyed writing it
     for you.
 */
+img.moby 
+{
+    max-width: 600px;
+    position: absolute;
+    right: 5%;
+    bottom: 0px;
+}
+
+.container {
+  background-image: url('../images/docker/moby_opacity.png'); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  border: 2em solid #3b4d54;
+  color: #FFF;
+}
+
+.footnote {
+  font-size: xx-small;
+}
+
+.install {
+  background-color: #3b4d54;
+  padding: 0.5em 2em;
+  color: #fff;
+  text-align: center;
+}
+
+.component {
+  position: absolute;
+  top: 40%;
+  left: 1em;
+  font-size: 3em;
+}
+.compdef {
+  position: absolute;
+  bottom: 1em;
+}
+
+.backslide {
+  background-color:#3b4d54;
+  padding: 2em;
+  color: #fff;
+}
