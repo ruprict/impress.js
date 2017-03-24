@@ -80,12 +80,14 @@
         <p>Docker is a <strong style="font-size: 1.5em;">containerization</strong> technology</p>
     </div>
     <div id="containers1" class="step detail" data-x="-2000" data-y="-1700" data-z="-3000">
-        <p>A container is an execution environment</p>
+        <p>A form of <b>virtualization</b></p>
+        <p>A container<sup>*</sup> is an execution environment</p>
+        <p style="font-size: xx-small">*Not a VM</p>
     </div>
     <div id="containers2" class="step" data-x="-2000" data-y="-1000" data-z="-4000">
-      <p>Containers have an isolated <strong>CPU</strong>, <strong>Memory</strong>, <strong>I/O</strong>, and <strong>Memory</strong></p>
+      <p>Containers have an isolated <strong>CPU</strong>, <strong>Memory</strong>, <strong>I/O</strong>, and <strong>Network</strong></p>
     </div>
-    <div id="kernel" class="step" data-x="-2000" data-y="-1500" data-z="-5000" style="text-align:center;">
+    <div id="kernel" class="step" data-x="-2000" data-y="-1500" data-z="-4500" style="text-align:center;">
       <p style="text-align: left">But they share</p>
       <img style="width: 50%;" src="./images/docker/Kernel_Layout.png"/>
       <p style="text-align:right">the kernel</p>
@@ -139,7 +141,7 @@
       <p class="component">Docker Engine</p>
       <p class="compdef">A lightweight runtime that runs containers</p>
     </div>
-    <div class="step" data-x="-3000" data-y="-500" data-z="-1000">
+    <div class="step" data-x="-3000" data-y="-500" data-z="-1500">
       <img src="images/docker/dockerm.png"/>
     </div>
 
@@ -148,7 +150,7 @@
       <p class="component">Docker CLI</p>
       <p class="compdef">The command line for Docker</p>
     </div>
-    <div class="step slide" data-x="-2000" data-y="-500" data-z="-1000">
+    <div class="step slide" data-x="-2000" data-y="-500" data-z="-1500">
       <pre style="padding: 0.5em;color: #FFF; background: #000; font-size:0.5em;font-family: Courier;"><code>Usage:  docker COMMAND
 A self-sufficient runtime for containers
 Options:
@@ -182,22 +184,22 @@ Management Commands:
       <p class="component">Registry</p>
       <p class="compdef">Store and distribute images</p>
     </div>
-    <div class="step backslide" data-x="-1000" data-y="-500" data-z="-1000">
+    <div class="step backslide" data-x="-1000" data-y="-500" data-z="-1500">
       <img src="images/docker/hub.png"/>
     </div>
-    <div class="step backslide" data-x="-1000" data-y="-500" data-z="-2000">
+    <div class="step backslide" data-x="-1000" data-y="-500" data-z="-3000">
       <a target="_blank" href="https://store.docker.com"><img src="images/docker/store.png"/></a>
     </div>
     <div id="volume" class="step slide container" data-x="0" data-y="-500">
       <h2>Components of Docker</h2>
-      <p class="component">Docker Volume</p>
+      <p class="component">Docker Volumes</p>
       <p class="compdef">Data that lives OUTSIDE the UFS on the HOST</p>
     </div>
-    <div class="step backslide" data-x="0" data-y="-500" data-z="-1000" >
+    <div class="step backslide" data-x="0" data-y="-500" data-z="-1500" >
       <img src="images/docker/ufs.png" />
       <p style="font-size: x-small">Image credit <a href="https://www.gitbook.com/book/washraf/the-docker-ecosystem/details">The Docker Ecosystem</a></p>
     </div>
-    <div class="step backslide" data-x="0" data-y="-500" data-z="-2000" >
+    <div class="step backslide" data-x="0" data-y="-500" data-z="-3000" >
       <img src="images/docker/ufs_vol.png" />
       <p style="font-size: x-small">Image credit <a href="https://www.gitbook.com/book/washraf/the-docker-ecosystem/details">The Docker Ecosystem</a></p>
     </div>
@@ -206,6 +208,15 @@ Management Commands:
       <h2>Components of Docker</h2>
       <p class="component">Docker Swarm</p>
       <p class="compdef">Cluster Docker Engines</p>
+    </div>
+    <div class="step backslide" data-x="1000" data-y="-500" data-z="-1500">
+      <img src="images/docker/swarm.png" style="background:#fff; padding:0.3em;"/>
+    </div>
+    <div class="step backslide" data-x="1000" data-y="-500" data-z="-3000">
+      <img style="width:100%" src="images/docker/routing-mesh.png" style="background:#fff; padding:0.3em;"/>
+    </div>
+    <div class="step backslide" data-x="1000" data-y="-500" data-z="-4500">
+      <img style="width:100%" src="images/docker/swarm-providers.jpeg" style="background:#fff; padding:0.3em;"/>
     </div>
 
     <div id="installation" class="step install" data-x="-4000" data-y="250">
@@ -219,6 +230,7 @@ Management Commands:
       </ul>
     </div>
     <div class="step install" data-x="-1000" data-y="250">
+      <img style="width:100%" src="images/docker/xhyve.png"/>
       <img src="images/docker/dockermac.png"/>
     </div>
     <div class="step install" data-x="500" data-y="250">
@@ -244,52 +256,145 @@ Management Commands:
     <div class="step install" data-x="4150" data-y="10" data-rotate="-20">
       <p>Docker's roots are old.</p>
     </div>
-    <div class="step" data-x="4150" data-y="10" data-rotate="-20" data-z="-1000">
-      <a href="https://dzone.com/articles/evolution-of-linux-containers-future">
+    <div class="step" data-x="4150" data-y="10" data-rotate="-20" data-z="-1500">
+      <a href="https://dzone.com/articles/evolution-of-linux-containers-future" target="_blank">
         <img src="images/docker/infoq.png" />
       </a>
     </div>
-    <div class="step" data-x="4150" data-y="10" data-rotate="-20" data-z="-2000">
+    <div class="step" data-x="4150" data-y="10" data-rotate="-20" data-z="-2700">
       <p>1979: In the beginning, there was chroot</a>
       <img src="images/docker/chroot.png"/>
     </div>
-    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-3000">
+    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-3800">
       <p>2007:<br/> Control Groups (thx Google)</a>
       <p>2008:<br/> LXC - cgroups and namespaces</a>
     </div>
-    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-4000">
+    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-4900">
       <p>2013: DOCKER</a>
       <p style="font-size: x-small;">2014: Rocket</a>
       <p style="font-size: x-small;">2016: Windows containers</a>
     </div>
 
-
     <!-- Structure -->
-    <div id="great" class="step" data-x="-3500" data-y="2550" data-rotate="-25"> 
+    <div id="great" class="step" data-x="-3500" data-y="2550" data-rotate="-25">
       <p>That's Great.</p>
     </div>
-    <div class="step" data-x="-3250" data-y="2300" data-rotate="-45"> 
+    <div class="step" data-x="-3250" data-y="2300" data-rotate="-45">
       <p> But HOW DO I USE IT?</p>
     </div>
 
-    <div class="step" data-x="-2500" data-y="2000" data-rotate="-0">
-      <p>Thanks!</p>
-      <img src="images/docker/cloud.png"/>
-    </div>
     <!-- Examples -->
     <div id="examples" class="step install" data-x="-4500" data-y="1000" data-rotate="90">
       <p>The Command Line</p>
     </div>
+    <div class="step install" data-x="-4500" data-y="1000" data-rotate="90" data-z="-1000">
+      <p><a target="_blank" href="https://store.docker.com/images/3083290a-203f-4c04-b2de-cc057959d2c9?tab=descriptio://store.docker.com/images/3083290a-203f-4c04-b2de-cc057959d2c9?tab=description">MySQL</a></p>
+    </div>
     <div class="step install" data-x="-4500" data-y="2000" data-rotate="90">
       <p>Dockerfile</p>
     </div>
+    <div class="step install" style="padding:0.2em" data-x="-4500" data-y="2000" data-rotate-x="90" data-scale="1">
+      <pre style="text-align: left;padding: 0.1em;color: #FFF; background: #000; font-size:0.35em;font-family: Courier;" >
+      <code>
+        FROM alpine:3.4
+        MAINTAINER Glenn Goodrich <glenn.goodrich@skookum.com>
 
-    <div class="step install" data-x="-4000" data-y="2900" data-rotate="40">
+        ENV BUILD_PACKAGES curl-dev ruby-dev build-base libxml2-dev
+          libxslt-dev libgcrypt libffi-dev git ncurses tzdata
+          openssl-dev postgresql-dev
+        ENV RUBY_PACKAGES ruby ruby-irb ruby-json ruby-rake
+          ruby-io-console ruby-bundler ruby-bigdecimal nodejs
+
+        # Update the package manager
+        RUN apk update && \
+            apk upgrade && \
+            apk add bash $BUILD_PACKAGES && \
+            apk add bash $RUBY_PACKAGES && \
+            rm -rf /var/cache/apk/*
+
+        EXPOSE 3000
+
+        RUN mkdir /app
+
+        WORKDIR /tmp
+        COPY Gemfile Gemfile
+        ADD Gemfile.lock Gemfile.lock
+        RUN gem install bundler --no-rdoc --no-ri
+        RUN gem install rake --no-rdoc --no-ri
+        RUN bundle install --jobs 3 --retry 5
+
+        ADD . /app
+        WORKDIR /app
+
+        CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+      </code></pre>
+    </div>
+    <div class="step install" style="padding:0.2em" data-x="-4500" data-y="2000" data-rotate-x="90" data-scale="1">
+      <pre style="text-align: left;padding: 0.1em;color: #FFF; background: #000; font-size:0.35em;font-family: Courier;" >
+      <code>
+        docker build -t ruprict/comfy-cms-test:demo .
+      </code>
+      <code>
+        docker push ruprict/comfy-cms-test:demo
+      </code>
+      </pre>
+    </div>
+
+
+    <div id="compose" class="step install" data-x="-4000" data-y="2900" data-rotate="40">
       <p>Docker Compose</p>
     </div>
 
-    <div class="step install" data-x="-3000" data-y="3500" data-rotate="30">
+    <div class="step install" data-x="-4000" data-y="2900" data-rotate="40" data-rotate-x="90" data-scale="1">
+      <pre style="text-align: left;padding: 0.1em;color: #FFF; background: #000; font-size:0.40em;font-family: Courier;" >
+      <code>
+version: "2"
+services:
+  api:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/
+        comfy_mexican_sofa_development
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+      </code></pre>
+    </div>
+    <div id="swarm-example" class="step install" data-x="-3000" data-y="3500" data-rotate="30">
       <p>Docker Swarm</p>
+    </div>
+    <div class="step install" data-x="-3000" data-y="3500" data-rotate="30" data-rotate-x="90">
+      <a target="_blank" href="https://docs.docker.com/docker-for-aws/">
+        <img src="images/docker/swarm.png" style="background:#fff; padding:0.3em;"/>
+      </a>
+    </div>
+    <div class="step install" data-x="-50000" data-y="3500" data-rotate="30" data-rotate-x="90">
+      <pre style="text-align: left;padding: 0.1em;color: #FFF; background: #000; font-size:0.40em;font-family: Courier;" >
+      <code>docker service create  —env DATABASE_URL=<RDSURL>
+        -env <AWS Stuff> ruprict/comfy-cms-test:v1.2.0
+      </code></pre>
+      <pre style="text-align: left;padding: 0.1em;color: #FFF; background: #000; font-size:0.40em;font-family: Courier;" >
+      <code>docker service update  —env DATABASE_URL=<RDSURL>
+        -env <AWS Stuff> ruprict/comfy-cms-test:v1.3.0
+      </code></pre>
+      <pre style="text-align: left;padding: 0.1em;color: #FFF; background: #000; font-size:0.40em;font-family: Courier;" >
+      <code>docker service create --name hello-world
+              --publish 8080:80 tutum/hello-world
+      </code></pre>
     </div>
 
     <div class="step install" data-x="-2000" data-y="3800" data-rotate="5">
@@ -317,6 +422,10 @@ Management Commands:
       <p>Questions?</p>
     </div>
 
+    <div class="step" data-x="-2500" data-y="2000" data-rotate="-0">
+      <p style="position:relative;bottom: -2em">Thanks!</p>
+      <img src="images/docker/cloud.png"/>
+    </div>
     <!--
 
         So to summarize of all the possible attributes used to position presentation steps, we have:

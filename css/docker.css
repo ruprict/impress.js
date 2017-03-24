@@ -726,7 +726,7 @@ a:focus {
     Thanks for reading. I hope you enjoyed it at least as much as I enjoyed writing it
     for you.
 */
-img.moby 
+img.moby
 {
     max-width: 600px;
     position: absolute;
@@ -735,7 +735,7 @@ img.moby
 }
 
 .container {
-  background-image: url('../images/docker/moby_opacity.png'); 
+  background-image: url('../images/docker/moby_opacity.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -770,4 +770,8 @@ img.moby
   background-color:#3b4d54;
   padding: 2em;
   color: #fff;
+}
+
+.future {
+  display: none;
 }
