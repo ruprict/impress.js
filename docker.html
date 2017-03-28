@@ -11,21 +11,6 @@
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
 
-    <!--
-
-        Impress.js doesn't depend on any external stylesheets. It adds all of the styles it needs for the
-        presentation to work.
-
-        This style below contains styles only for demo presentation. Browse it to see how impress.js
-        classes are used to style presentation steps, or how to apply fallback styles, but I don't want
-        you to use them directly in your presentation.
-
-        Be creative, build your own. We don't really want all impress.js presentations to look the same,
-        do we?
-
-        When creating your own presentation get rid of this file. Start from scratch, it's fun!
-
-    -->
     <link href="css/impress-demo.css" rel="stylesheet" />
     <link href="css/docker.css" rel="stylesheet" />
 
@@ -35,9 +20,6 @@
 
 <body class="impress-not-supported">
 
-<!--
-    For example this fallback message is only visible when there is `impress-not-supported` class on body.
--->
 <div class="fallback-message">
     <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
     <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
@@ -47,63 +29,94 @@
 
     <div id="bored" class="step slide container" data-x="0" data-y="-2500" style="">
       <p>Containerize This</p>
-      <p>Intro to Docker</p>
+      <p>Using Docker for Development</p>
     </div>
-
-    <!--
-
-        The `id` attribute of the step element is used to identify it in the URL, but it's optional.
-        If it is not defined, it will get a default value of `step-N` where N is a number of slide.
-
-        So in the example below it'll be `step-2`.
-
-        The hash part of the url when this step is active will be `#/step-2`.
-
-        You can also use `#step-2` in a link, to point directly to this particular step.
-
-        Please note, that while `#/step-2` (with slash) would also work in a link it's not recommended.
-        Using classic `id`-based links like `#step-2` makes these links usable also in fallback mode.
-
-    -->
-
-    <!--
-
-        This is an example of step element being scaled.
-
-        Again, we use a `data-` attribute, this time it's `data-scale="4"`, so it means that this
-        element will be 4 times larger than the others.
-        From presentation and transitions point of view it means, that it will have to be scaled
-        down (4 times) to make it back to its correct size.
-
-    -->
     <div id="containers" class="step slide container emphasis" data-x="-2000" data-y="-1500">
         <p>Docker is a <strong style="font-size: 1.5em;">containerization</strong> technology</p>
+        <p class="substeps" >What the hell is that?</p>
     </div>
     <div id="containers1" class="step detail" data-x="-2000" data-y="-1700" data-z="-3000">
-        <p>A form of <b>virtualization</b></p>
-        <p>A container<sup>*</sup> is an execution environment</p>
-        <p style="font-size: xx-small">*Not a VM</p>
+      <p>A container is:</p>
+      <ul style="padding-left: 1em;">
+        <li>A. A form of <b>virtualization</b></li>
+        <li>B. An execution environment</li>
+        <li class='wrong-answer'>C. A virtual machine </li>
+        <li class='wrong-answer'>D. What I put my leftovers in</li>
+      </ul>
     </div>
-    <div id="containers2" class="step" data-x="-2000" data-y="-1000" data-z="-4000">
-      <p>Containers have an isolated <strong>CPU</strong>, <strong>Memory</strong>, <strong>I/O</strong>, and <strong>Network</strong></p>
+    <div id="containers2" class="step detail" data-x="-2000" data-y="-1000" data-z="-4000">
+      <p>How do we isolate a process?</p>
+      <ul style="padding-left: 1em;">
+        <li class='wrong-answer'>A. Call it names/make fun of its cloths</li>
+        <li>B. Carve out CPU</li>
+        <li>C. Give it its own network interface </li>
+        <li>D. Give it its own file system</li>
+        <li>E. Carve out Memory</li>
+      </ul>
     </div>
-    <div id="kernel" class="step" data-x="-2000" data-y="-1500" data-z="-4500" style="text-align:center;">
-      <p style="text-align: left">But they share</p>
+    <div id="kernel" class="step detail" data-x="-2000" data-y="-1500" data-z="-4500" style="text-align:center;">
+      <p style="text-align: left">But share</p>
       <img style="width: 50%;" src="./images/docker/Kernel_Layout.png"/>
       <p style="text-align:right">the kernel</p>
       <p class="footnote">Image via Wikipedia <a href="https://en.wikipedia.org/wiki/Kernel_(operating_system)#/media/File:Kernel_Layout.svg">here</a></p>
     </div>
 
-    <div id="images" class="step slide container emphasis" data-x="-1000" data-y="-1500">
-      <p>Containers are based on <b>images</b> </p>
+    <div  class="step detail" data-x="-2000" data-y="-2500" data-z="-4500" style="text-align:center;">
+      <blockquote>Containers are just like VMs</blockquote>
     </div>
-    <div class="step detail" data-x="-1000" data-y="-1200" data-z="-1000">
-      <p>Images are a collection of read-only layers</p>
-      <p style="font-size: small">This is the Union File System (UFS)</p>
+
+    <div id="diff-from-vms" class="step slide container emphasis" data-x="-1000" data-y="-1500">
+      <p>How are containers different from VMs? </p>
     </div>
-    <div class="step detail" data-x="-1000" data-y="-1600" data-z="-2000">
-      <p>Each layer holds a file system difference</p>
+
+    <div class="step backslide" style="width:1600px" data-x="-1000" data-y="-1000" data-z="-1500">
+      <img style="width:50%;float:right" src="images/docker/vm.png"/>
+      <img style="width:50%;float:left" src="images/docker/dockerm.png"/>
+    </div>
+    <div id="moped" class="step backslide" style="width:1600px" data-x="-1000" data-y="-1000" data-z="-2500" onclick="addMoped(event)">
+      <img style="width:300px;float:right" src="images/docker/hummer.jpg"/>
+      <img style="width:150px;float:left" src="images/docker/moped.jpg"/>
+    </div>
+    <!-- Roots -->
+    <div class="step install" data-x="4150" data-y="10" data-rotate="-20">
+      <p>Docker's roots are old.</p>
+    </div>
+    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-1500">
+      <blockquote style="float:left;width:40%">HOW OLD ARE THEY?</blockquote>
+      <img style="float:right" src="images/docker/oldtools.jpg" />
+    </div>
+    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-3000">
+      <p>1979: In the beginning, there was chroot</p>
+      <img style="width: 100%" src="images/docker/chroot.png"/>
+      <img style="width: 100%" src="images/docker/chrooting.jpg"/>
+      <p style="font-size:x-small; text-align:center;">Early man chrooting</p>
+    </div>
+    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-4500">
+      <p style="text-align:center">Controls Groups</p>
+      <img style="width: 48%" src="images/docker/littles.jpg"/>
+      <img style="width: 48%" src="images/docker/littles.jpg"/>
+      <p style="text-align:center;">Namespaces</p>
+    </div>
+    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-5750">
+      <p>2013: DOCKER</a>
+      <img style="width: 100%" src="images/docker/newborn.jpeg"/>
+      <p style="font-size: x-small;">2014: Rocket</a>
+      <p style="font-size: x-small;">2016: Windows containers</a>
+    </div>
+    <div id="images" class="step slide container emphasis" data-x="-10000" data-y="-1500" >
+      <p>Srsly, why so many kids?</p>
+      <p class="step1">How do I "run" a container?</p>
+      <p class="step2">Containers are based on "images"</p>
+    </div>
+    <div class="step slide container emphasis" data-x="-10000" data-y="-1500" data-z="-1000">
+      <p>Oh really? What's an image?</p>
+      <p class="step1">A filesystem with core libs </p>
+    </div>
+    <div class="step backslide" data-x="-10000" data-y="-1200" data-z="-1500">
+      <p>Read-only layers</p>
       <img src="images/docker/image-layers.jpg"/>
+      <p>Each holds a filesystem diff</p>
+      <p style="font-size: small">This is the Union File System (UFS)</p>
     </div>
 
     <div class="step detail" data-x="-1000" data-y="-2000" data-z="-2500">
@@ -252,28 +265,6 @@ Management Commands:
     </div>
 
 
-    <!-- Roots -->
-    <div class="step install" data-x="4150" data-y="10" data-rotate="-20">
-      <p>Docker's roots are old.</p>
-    </div>
-    <div class="step" data-x="4150" data-y="10" data-rotate="-20" data-z="-1500">
-      <a href="https://dzone.com/articles/evolution-of-linux-containers-future" target="_blank">
-        <img src="images/docker/infoq.png" />
-      </a>
-    </div>
-    <div class="step" data-x="4150" data-y="10" data-rotate="-20" data-z="-2700">
-      <p>1979: In the beginning, there was chroot</a>
-      <img src="images/docker/chroot.png"/>
-    </div>
-    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-3800">
-      <p>2007:<br/> Control Groups (thx Google)</a>
-      <p>2008:<br/> LXC - cgroups and namespaces</a>
-    </div>
-    <div class="step backslide" data-x="4150" data-y="10" data-rotate="-20" data-z="-4900">
-      <p>2013: DOCKER</a>
-      <p style="font-size: x-small;">2014: Rocket</a>
-      <p style="font-size: x-small;">2016: Windows containers</a>
-    </div>
 
     <!-- Structure -->
     <div id="great" class="step" data-x="-3500" data-y="2550" data-rotate="-25">
@@ -462,50 +453,28 @@ services:
 
 -->
 <script src="js/impress.js"></script>
-<script>impress().init();</script>
+<script>
+impress().init();
 
-<!--
+var moped = document.getElementById( "moped" );
+var addMoped= function(event) {
+  var self = event.target;
+  var img = document.createElement("img");
+  img.src= "images/docker/moped.jpg";
+  img.style.width="150px";
+  self.appendChild(img);
+};
+var images = document.getElementById( "images" );
+var stepNo = 0;
+var addImageStep = function(event) {
+  var self = event.target;
+  stepNo +=1;
 
-    The `impress()` function also gives you access to the API that controls the presentation.
+  self.className += ` step-${stepNo}`;
+};
+images.addEventListener("click", addImageStep);
 
-    Just store the result of the call:
-
-        var api = impress();
-
-    and you will get three functions you can call:
-
-        `api.init()` - initializes the presentation,
-        `api.next()` - moves to next step of the presentation,
-        `api.prev()` - moves to previous step of the presentation,
-        `api.goto( stepIndex | stepElementId | stepElement, [duration] )` - moves the presentation to the step given by its index number
-                id or the DOM element; second parameter can be used to define duration of the transition in ms,
-                but it's optional - if not provided default transition duration for the presentation will be used.
-
-    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
-    Don't worry, it wont initialize the presentation again.
-
-    For some example uses of this API check the last part of the source of impress.js where the API
-    is used in event handlers.
-
--->
+</script>
 
 </body>
 </html>
-
-
-<!--
-
-    Are you still reading this?
-
-    For real?
-
-    I'm impressed! Feel free to let me know that you got that far (I'm @bartaz on Twitter), 'cause I'd like
-    to congratulate you personally :)
-
-    But you don't have to do it now. Take my advice and take some time off. Make yourself a cup of coffee, tea,
-    or anything you like to drink. And raise a glass for me ;)
-
-    Cheers!
-
--->
-
